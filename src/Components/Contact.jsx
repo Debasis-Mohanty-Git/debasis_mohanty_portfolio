@@ -6,15 +6,19 @@ import {
     MapPin,
     MessageCircle,
     Phone,
-    Send,
     Twitch,
     Twitter,
 } from "lucide-react";
 import { useState } from "react";
 import utils from "../lib/utils";
+import { useToast } from "./hooks/use-toast";
+import { useNavigate } from "react-router-dom";
+
 
 export const Contact = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const { toast } = useToast();
+    const navigate=useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,7 +37,7 @@ export const Contact = () => {
         <section id="contact" className="py-24 px-4 relative bg-secondary/30">
             <div className="container mx-auto max-w-5xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-                    Get In <span className="text-primary"> Touch</span>
+                    Get In <span className="text-cyan-500"> Touch</span>
                 </h2>
 
                 <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
@@ -49,7 +53,7 @@ export const Contact = () => {
 
                         <div className="space-y-6 justify-center">
                             <div className="flex items-start space-x-4">
-                                <div className="p-3 rounded-full bg-primary/10">
+                                <div className="p-3 rounded-full bg-cyan-500/10">
                                     <Mail className="h-6 w-6 text-primary" />{" "}
                                 </div>
                                 <div>
@@ -63,7 +67,7 @@ export const Contact = () => {
                                 </div>
                             </div>
                             <div className="flex items-start space-x-4">
-                                <div className="p-3 rounded-full bg-primary/10">
+                                <div className="p-3 rounded-full bg-cyan-500/10">
                                     <Phone className="h-6 w-6 text-primary" />{" "}
                                 </div>
                                 <div>
@@ -77,7 +81,7 @@ export const Contact = () => {
                                 </div>
                             </div>
                             <div className="flex items-start space-x-4">
-                                <div className="p-3 rounded-full bg-primary/10">
+                                <div className="p-3 rounded-full bg-cyan-500/10">
                                     <MapPin className="h-6 w-6 text-primary" />{" "}
                                 </div>
                                 <div>
@@ -129,7 +133,7 @@ export const Contact = () => {
                                     name="name"
                                     required
                                     className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                                    placeholder="Pedro Machado..."
+                                    placeholder="Debasis Mohanty..."
                                 />
                             </div>
 
@@ -147,7 +151,7 @@ export const Contact = () => {
                                     name="email"
                                     required
                                     className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                                    placeholder="john@gmail.com"
+                                    placeholder="debasis@gmail.com"
                                 />
                             </div>
 
@@ -164,7 +168,7 @@ export const Contact = () => {
                                     name="message"
                                     required
                                     className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary resize-none"
-                                    placeholder="Hello, I'd like to talk about..."
+                                    placeholder="Hello,I want to msg....."
                                 />
                             </div>
 
@@ -176,9 +180,9 @@ export const Contact = () => {
                                 )}
                             >
                                 {isSubmitting ? "Sending..." : "Send Message"}
-                                <Send size={16} />
                             </button>
                         </form>
+
                     </div>
                 </div>
             </div>

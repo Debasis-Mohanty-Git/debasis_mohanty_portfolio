@@ -100,7 +100,7 @@ const Project = () => {
                     <a
                         className="cosmic-button w-fit flex items-center mx-auto gap-2"
                         target="_blank"
-                        href="#"
+                        href="https://github.com/Debasis-Mohanty-Git?tab=repositories"
                     >
                         Check My Github <ArrowRight size={16} />
                     </a>

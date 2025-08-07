@@ -23,7 +23,7 @@ const HomeSection = () => {
 
                     <div className="opacity-0 animate-fade-in-delay-4 pt-4">
                         <a className='cosmic-button'
-                        href="#projects">View My Work
+                        href="#projects">Go To My Projects
                         </a>
                     </div>
                 </div>
