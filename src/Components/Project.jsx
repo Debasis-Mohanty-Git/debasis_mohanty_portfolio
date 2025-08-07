@@ -8,8 +8,8 @@ const projects = [
         description: "Good Project",
         image: "/Projects/e_commerce.png",
         tags: ["React", "Tailwind", "Spring Boot"],
-        demoUrl: "#",
-        githubUrl: "#",
+        demoUrl: "https://www.linkedin.com/in/debasis-mohanty-a517a1258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
+        githubUrl: "https://github.com/Debasis-Mohanty-Git?tab=repositories",
     },
 
     {
@@ -18,8 +18,8 @@ const projects = [
         description: "Good Project",
         image: "/Projects/e_book.png",
         tags: ["HTML/CSS/JS", "Bootstarp", "Spring Boot"],
-        demoUrl: "#",
-        githubUrl: "#",
+        demoUrl: "https://www.linkedin.com/in/debasis-mohanty-a517a1258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
+        githubUrl: "https://github.com/Debasis-Mohanty-Git?tab=repositories",
     },
 
     {
@@ -28,8 +28,8 @@ const projects = [
         description: "Good Project",
         image: "/Projects/smart_contact_management.png",
         tags: ["HTML/CSS/JS", "Tailwind", "Spring Boot"],
-        demoUrl: "#",
-        githubUrl: "#",
+        demoUrl: "https://www.linkedin.com/in/debasis-mohanty-a517a1258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
+        githubUrl: "https://github.com/Debasis-Mohanty-Git?tab=repositories",
     },
 ]
 const Project = () => {
