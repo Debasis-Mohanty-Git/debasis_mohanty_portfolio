@@ -120,7 +120,7 @@ export const Contact = () => {
                         </div>
 
                         <div className="pt-8">
-                            <h4 className="font-medium mb-4"> Around tHe Web</h4>
+                            <h4 className="font-medium mb-4"> Around The Web</h4>
                             <div className="flex space-x-4 justify-center">
                                 <a href="https://www.linkedin.com/in/debasis-mohanty-a517a1258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app " target="_blank">
                                     <Linkedin />

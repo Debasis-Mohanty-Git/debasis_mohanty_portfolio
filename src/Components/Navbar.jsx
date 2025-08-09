@@ -8,7 +8,7 @@ const navItem = [
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
-    { name: "Contsct", href: "#contact" }
+    { name: "Contact", href: "#contact" }
 ]
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
