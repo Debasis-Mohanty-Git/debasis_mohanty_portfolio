@@ -1,37 +1,18 @@
 import { ArrowBigDown, Heart } from 'lucide-react'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 const HomeSection = () => {
     const [likes, setLikes] = useState(0)
     const [liked, setLiked] = useState(false)
 
-    // Load saved likes and liked state from localStorage when the page loads
-    useEffect(() => {
-        const savedLikes = localStorage.getItem('likes')
-        const savedLiked = localStorage.getItem('liked')
-        
-        if (savedLikes) {
-            setLikes(Number(savedLikes))
-        }
-        if (savedLiked === 'true') {
-            setLiked(true)
-        }
-    }, [])
-
     const handleLike = () => {
-        let newLikes = likes
-
         if (!liked) {
-            newLikes = likes + 1
+            setLikes(likes + 1)
             setLiked(true)
         } else {
-            newLikes = likes - 1
+            setLikes(likes - 1)
             setLiked(false)
         }
-
-        setLikes(newLikes)
-        localStorage.setItem('likes', newLikes)
-        localStorage.setItem('liked', !liked)
     }
 
     return (
@@ -60,7 +41,7 @@ const HomeSection = () => {
                         </a>
                     </div>
 
-                    {/* Like Button (Persistent with localStorage) */}
+                    {/* Like Button */}
                     <div className="flex justify-center items-center gap-2 pt-6">
                         <button
                             onClick={handleLike}
