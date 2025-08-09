@@ -1,11 +1,25 @@
-import { ArrowBigDown } from 'lucide-react'
-import React from 'react'
+import { ArrowBigDown, Heart } from 'lucide-react'
+import React, { useState } from 'react'
 
 const HomeSection = () => {
-    return (
-        <section className='relative min-h-screen flex flex-col items-center justify-center px-4'
-            id="home">
+    const [likes, setLikes] = useState(0)
+    const [liked, setLiked] = useState(false)
 
+    const handleLike = () => {
+        if (!liked) {
+            setLikes(likes + 1)
+            setLiked(true)
+        } else {
+            setLikes(likes - 1)
+            setLiked(false)
+        }
+    }
+
+    return (
+        <section
+            className='relative min-h-screen flex flex-col items-center justify-center px-4'
+            id="home"
+        >
             <div className='containet max-w-4xl mx-auto text-center z-10'>
                 <div className='space-y-6'>
                     <h1 className='text-4xl md:text-6xl tracking-tight'>
@@ -22,19 +36,30 @@ const HomeSection = () => {
                     </p>
 
                     <div className="opacity-0 animate-fade-in-delay-4 pt-4">
-                        <a className='cosmic-button'
-                        href="#projects">Go To My Projects
+                        <a className='cosmic-button' href="#projects">
+                            Go To My Projects
                         </a>
+                    </div>
+
+                    {/* Like Button */}
+                    <div className="flex justify-center items-center gap-2 pt-6">
+                        <button
+                            onClick={handleLike}
+                            className="flex items-center gap-2 px-4 py-2 border rounded-full transition"
+                        >
+                            <Heart
+                                className={`h-5 w-5 ${liked ? 'fill-red-500 text-red-500' : 'text-gray-500'}`}
+                            />
+                            <span>{likes}</span>
+                        </button>
                     </div>
                 </div>
             </div>
 
             <div className='absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce'>
                 <span className='text-sm text-muted-foreground mb-2'>Scroll</span>
-                <ArrowBigDown className='h-5 w-5 text-cyan-600'></ArrowBigDown>
+                <ArrowBigDown className='h-5 w-5 text-cyan-600' />
             </div>
-
-
         </section>
     )
 }
