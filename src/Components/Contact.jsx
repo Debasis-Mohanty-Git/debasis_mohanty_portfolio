@@ -19,7 +19,7 @@ import { Toaster } from "./ui/toaster";
 export const Contact = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const { toast } = useToast();
-    const navigate=useNavigate();
+    const navigate = useNavigate();
     const [result, setResult] = React.useState("");
 
     const handleSubmit = (e) => {
@@ -37,28 +37,28 @@ export const Contact = () => {
     };
 
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    setResult("Sending....");
-    const formData = new FormData(event.target);
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        setResult("Sending....");
+        const formData = new FormData(event.target);
 
-    formData.append("access_key", "c79462ae-e973-4048-a7f1-4616043243f3");
+        formData.append("access_key", "c79462ae-e973-4048-a7f1-4616043243f3");
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
-    });
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        });
 
-    const data = await response.json();
+        const data = await response.json();
 
-    if (data.success) {
-      setResult("Form Submitted Successfully");
-      event.target.reset();
-    } else {
-      console.log("Error", data);
-      setResult(data.message);
-    }
-  };
+        if (data.success) {
+            setResult("Form Submitted Successfully");
+            event.target.reset();
+        } else {
+            console.log("Error", data);
+            setResult(data.message);
+        }
+    };
     return (
         <section id="contact" className="py-24 px-4 relative bg-secondary/30">
             <div className="container mx-auto max-w-5xl">
@@ -142,8 +142,8 @@ export const Contact = () => {
                         className="bg-card p-8 rounded-lg shadow-xs"
                         onSubmit={handleSubmit}
                     >
+                        <Toaster />
                         <h3 className="text-2xl font-semibold mb-6"> Send a Message</h3>
-                      <Toaster />
                         <form className="space-y-6" onSubmit={onSubmit}>
                             <div>
                                 <label
