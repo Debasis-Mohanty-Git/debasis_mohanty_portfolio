@@ -7,11 +7,14 @@ const HomeSection = () => {
     const [likes, setLikes] = useState(0)
     const [liked, setLiked] = useState(false)
 
-    // Document reference
     const likeDocRef = doc(db, "likes", "portfolio")
 
     useEffect(() => {
-        // Real-time listener
+        const storedLike = localStorage.getItem("liked_portfolio")
+        if (storedLike === "true") {
+            setLiked(true)
+        }
+
         const unsubscribe = onSnapshot(likeDocRef, (docSnap) => {
             if (docSnap.exists()) {
                 setLikes(docSnap.data().count)
@@ -22,18 +25,15 @@ const HomeSection = () => {
     }, [])
 
     const handleLike = async () => {
+        if (liked) return
+
         const docSnap = await getDoc(likeDocRef)
 
         if (docSnap.exists()) {
             const currentLikes = docSnap.data().count
-
-            if (!liked) {
-                await updateDoc(likeDocRef, { count: currentLikes + 1 })
-                setLiked(true)
-            } else {
-                await updateDoc(likeDocRef, { count: currentLikes - 1 })
-                setLiked(false)
-            }
+            await updateDoc(likeDocRef, { count: currentLikes + 1 })
+            setLiked(true)
+            localStorage.setItem("liked_portfolio", "true")
         }
     }
 
@@ -50,7 +50,7 @@ const HomeSection = () => {
                     <p className='text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-3'>
                         Hey there! I'm Debasis Mohanty — welcome to my portfolio.
                         I love turning ideas into real things on the web.
-                        This site is where I share my journey and projects. 
+                        This site is where I share my journey and projects.
                         Feel free to look around!
                     </p>
 
@@ -64,14 +64,17 @@ const HomeSection = () => {
                     <div className="flex justify-center items-center gap-2 pt-6">
                         <button
                             onClick={handleLike}
-                            className="flex items-center gap-2 px-4 py-2 border rounded-full transition"
+                            disabled={liked}
+                            className={`flex items-center gap-2 px-4 py-2 border rounded-full transition 
+            ${liked ? 'bg-red-500 text-white cursor-not-allowed' : ''}`}
                         >
                             <Heart
-                                className={`h-5 w-5 ${liked ? 'fill-red-500 text-red-500' : 'text-gray-500'}`}
+                                className={`h-5 w-5 ${liked ? 'fill-white' : 'text-gray-500'}`}
                             />
                             <span>{likes}</span>
                         </button>
                     </div>
+
                 </div>
             </div>
 
