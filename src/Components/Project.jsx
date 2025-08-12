@@ -38,7 +38,7 @@ const Project = () => {
             <div className="container mx-auto max-w-5xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
                     {" "}
-                    Featured <span className="text-primary"> Projects </span>
+                    Featured <span className="text-cyan-500"> Projects </span>
                 </h2>
 
                 <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
