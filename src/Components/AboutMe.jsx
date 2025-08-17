@@ -26,7 +26,7 @@ const AboutMe = () => {
                                 Get In Touch
                             </a>
 
-                            <a href=''
+                            <a href="/cv.pdf" download="Debasis_Mohanty_CV.pdf"
                                 className='px-6 py-2 rounded-full border border-cyan-300 text-primary hover:bg-cyan-500 hover:text-black'>
                                 Download CV
                             </a>
