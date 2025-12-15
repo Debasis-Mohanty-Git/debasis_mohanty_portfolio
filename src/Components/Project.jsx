@@ -2,45 +2,56 @@ import { ArrowRight, ExternalLink, Github } from 'lucide-react'
 import React from 'react'
 
 const projects = [
-    {
-        id: 1,
-        title: "E commerce Home Page",
-        description: "",
-        image: "/Projects/e_commerce.png",
-        tags: ["React", "Tailwind", "Spring Boot"],
-        demoUrl: "https://www.linkedin.com/in/debasis-mohanty-a517a1258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
-        githubUrl: "https://github.com/Debasis-Mohanty-Git?tab=repositories",
-    },
+  {
+    id: 1,
+    title: "Full-Stack E-Commerce Web Application",
+    description: "A scalable e-commerce platform featuring product browsing, secure authentication, and order management with a responsive user interface.",
+    image: "/Projects/e_commerce.png",
+    tags: ["React", "Tailwind", "Spring Boot"],
+    demoUrl: "https://www.linkedin.com/in/debasis-mohanty-a517a1258",
+    githubUrl: "https://github.com/Debasis-Mohanty-Git",
+},
 
-    {
-        id: 2,
-        title: "Book Library  Home Page",
-        description: "",
-        image: "/Projects/e_book.png",
-        tags: ["HTML/CSS/JS", "Bootstarp", "Spring Boot"],
-        demoUrl: "https://www.linkedin.com/in/debasis-mohanty-a517a1258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
-        githubUrl: "https://github.com/Debasis-Mohanty-Git?tab=repositories",
-    },
+{
+    id: 2,
+    title: "Online Book Library Management System",
+    description: "A web-based library system that allows users to browse, manage, and track books efficiently with a clean and user-friendly interface.",
+    image: "/Projects/e_book.png",
+    tags: ["HTML", "CSS", "JavaScript", "Bootstrap", "Spring Boot"],
+    demoUrl: "https://www.linkedin.com/in/debasis-mohanty-a517a1258",
+    githubUrl: "https://github.com/Debasis-Mohanty-Git",
+},
 
-    {
-        id: 3,
-        title: "Smart contact management Home Page",
-        description: "",
-        image: "/Projects/smart_contact_management.png",
-        tags: ["HTML/CSS/JS", "Tailwind", "Spring Boot"],
-        demoUrl: "https://www.linkedin.com/in/debasis-mohanty-a517a1258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
-        githubUrl: "https://github.com/Debasis-Mohanty-Git?tab=repositories",
-    },
+{
+    id: 3,
+    title: "Smart Contact Management System",
+    description: "An intelligent contact management application enabling users to securely store, search, and organize contacts with role-based access.",
+    image: "/Projects/smart_contact_management.png",
+    tags: ["HTML", "CSS", "JavaScript", "Tailwind", "Spring Boot"],
+    demoUrl: "https://www.linkedin.com/in/debasis-mohanty-a517a1258",
+    githubUrl: "https://github.com/Debasis-Mohanty-Git",
+},
 
-    {
-        id: 4,
-        title: "Realtime Chatting Web",
-        description: "",
-        image: "/Projects/online_chatting.png",
-        tags: ["React JS", "Tailwind", "Spring Boot","Web Socket"],
-        demoUrl: "https://www.linkedin.com/in/debasis-mohanty-a517a1258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
-        githubUrl: "https://github.com/Debasis-Mohanty-Git?tab=repositories",
-    },
+{
+    id: 4,
+    title: "Real-Time Chat Application",
+    description: "A real-time messaging web application supporting instant communication using WebSocket technology with a modern and responsive UI.",
+    image: "/Projects/online_chatting.png",
+    tags: ["React", "Tailwind", "Spring Boot", "WebSocket"],
+    demoUrl: "https://www.linkedin.com/in/debasis-mohanty-a517a1258",
+    githubUrl: "https://github.com/Debasis-Mohanty-Git",
+},
+{
+    id: 5,
+    title: "Online Food Ordering Web Application",
+    description: "A full-stack food ordering platform that allows users to browse menus, place orders, and track order status with a responsive and intuitive user interface.",
+    image: "/Projects/food_ordering.png",
+    tags: ["React", "Tailwind", "Spring Boot"],
+    demoUrl: "https://www.linkedin.com/in/debasis-mohanty-a517a1258",
+    githubUrl: "https://github.com/Debasis-Mohanty-Git",
+},
+
+
 ]
 const Project = () => {
     return (
