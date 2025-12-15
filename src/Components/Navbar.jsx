@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
-import utils from '../lib/utils'
-import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
+import React, { useEffect } from 'react';
+import utils from '../lib/utils';
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const navItem = [
     { name: "Home", href: "#home" },
@@ -10,20 +10,28 @@ const navItem = [
     { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" }
 ]
+
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.screenY > 10);
+            // **FIXED LINE:** Use window.scrollY to check the vertical scroll position
+            setIsScrolled(window.scrollY > 10);
         }
+
         window.addEventListener("scroll", handleScroll);
+
+        // Cleanup function to remove the event listener
         return () => window.removeEventListener("scroll", handleScroll);
     }, [])
+
     return (
         <nav className={utils(
+            // **STICKY NAVBAR:** Your 'fixed w-full z-40' class makes it sticky.
             "fixed w-full z-40 transition-all duration-300",
+            // This ternary changes the style based on the 'isScrolled' state.
             isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
         )}>
             {/* For large screen */}
@@ -87,4 +95,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default Navbar;
