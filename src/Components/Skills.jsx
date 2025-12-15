@@ -4,8 +4,10 @@ import utils from '../lib/utils';
 const skills = [
   { name: "Java", level: 80, category: "backend" },
   { name: "Spring Boot", level: 80, category: "backend" },
-  { name: "Spring MVC", level: 90, category: "backend" },
+  { name: "WebSocket", level: 70, category: "backend" },
+  { name: "Microservices", level: 90, category: "backend" },
   { name: "Spring Security", level: 80, category: "backend" },
+  { name: "Spring MVC", level: 90, category: "backend" },
   { name: "Servlets", level: 85, category: "backend" },
   { name: "RESTful APIs", level: 90, category: "backend" },
   { name: "Hibernate / JPA", level: 80, category: "backend" },

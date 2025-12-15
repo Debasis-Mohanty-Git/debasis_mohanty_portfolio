@@ -14,11 +14,19 @@ const AboutMe = () => {
                     <div className='space-y-3'>
                         <h3 className='text-2xl font-semibold'>Passionate Java Developer</h3>
                         <p className='text-muted-foreground'>
-                            I am a dedicated Java developer with a strong foundation in building robust, scalable, and high-performance web applications. My passion lies in crafting clean and efficient code, designing intuitive user experiences, and delivering real-world solutions that make an impact. I enjoy turning complex problems into simple, elegant solutions using modern frameworks and best development practices.
+                            I am a dedicated Java developer with a strong foundation in building robust, 
+                            scalable, and high-performance web applications. My passion lies in crafting 
+                            clean and efficient code, designing intuitive user experiences, and delivering 
+                            real-world solutions that make an impact. I enjoy turning complex problems into 
+                            simple, elegant solutions using modern frameworks and best development practices.
                         </p>
 
                         <p className='text-muted-foreground'>
-                            With hands-on experience in both frontend and backend technologies, I focus on building full-stack applications using Java, Spring Boot, MySQL, and tools like Git, Postman, and Maven. I value collaboration, continuous learning, and writing maintainable code that aligns with industry standards. My goal is to build meaningful software that not only works flawlessly but also adds value to users and businesses.
+                            With hands-on experience in both frontend and backend technologies, I focus on building 
+                            full-stack applications using Java, Spring Boot, MySQL, and tools like Git, Postman, and Maven. 
+                            I value collaboration, continuous learning, and writing maintainable code that aligns with industry 
+                            standards. My goal is to build meaningful software that not only works flawlessly but also adds value 
+                            to users and businesses.
                         </p>
 
                         <div className='flex flex-col sm:flex-row gap-4 pt-4 justify-center'>
