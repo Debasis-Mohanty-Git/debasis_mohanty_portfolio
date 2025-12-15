@@ -5,7 +5,7 @@ const projects = [
     {
         id: 1,
         title: "E commerce Home Page",
-        description: "Good Project",
+        description: "",
         image: "/Projects/e_commerce.png",
         tags: ["React", "Tailwind", "Spring Boot"],
         demoUrl: "https://www.linkedin.com/in/debasis-mohanty-a517a1258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
@@ -15,7 +15,7 @@ const projects = [
     {
         id: 2,
         title: "Book Library  Home Page",
-        description: "Good Project",
+        description: "",
         image: "/Projects/e_book.png",
         tags: ["HTML/CSS/JS", "Bootstarp", "Spring Boot"],
         demoUrl: "https://www.linkedin.com/in/debasis-mohanty-a517a1258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
@@ -25,9 +25,19 @@ const projects = [
     {
         id: 3,
         title: "Smart contact management Home Page",
-        description: "Good Project",
+        description: "",
         image: "/Projects/smart_contact_management.png",
         tags: ["HTML/CSS/JS", "Tailwind", "Spring Boot"],
+        demoUrl: "https://www.linkedin.com/in/debasis-mohanty-a517a1258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
+        githubUrl: "https://github.com/Debasis-Mohanty-Git?tab=repositories",
+    },
+
+    {
+        id: 4,
+        title: "Realtime Chatting Web",
+        description: "",
+        image: "/Projects/online_chatting.png",
+        tags: ["React JS", "Tailwind", "Spring Boot","Web Socket"],
         demoUrl: "https://www.linkedin.com/in/debasis-mohanty-a517a1258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
         githubUrl: "https://github.com/Debasis-Mohanty-Git?tab=repositories",
     },

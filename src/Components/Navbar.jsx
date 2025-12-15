@@ -1,90 +1,106 @@
-import React, { useEffect } from 'react'
-import utils from '../lib/utils'
-import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
+import React, { useEffect, useState } from "react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 
-const navItem = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" }
-]
+const navItems = [
+  { name: "Home", href: "#home" },
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Contact", href: "#contact" }
+];
+
 const Navbar = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.screenY > 10);
-        }
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [])
-    return (
-        <nav className={utils(
-            "fixed w-full z-40 transition-all duration-300",
-            isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
-        )}>
-            {/* For large screen */}
-            <div className="container flex items-center justify-between">
-                <a
-                    className="text-xl font-bold text-cyan-500 flex items-center"
-                    href=""
-                >
-                    <span className="relative z-10">
-                        <span className="text-glow text-foreground"> Debasis's </span>{" "}
-                        Portfolio
-                    </span>
-                </a>
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-                <div className="hidden md:flex space-x-8">
-                    {navItem.map((item, key) => (
-                        <a
-                            key={key}
-                            href={item.href}
-                            className="text-foreground/80 hover:text-cyan-500 transition-colors duration-300"
-                        >
-                            {item.name}
-                        </a>
-                    ))}
-                </div>
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
 
-            </div>
+  return (
+    <>
+      
+      <nav
+        className={`fixed top-0 w-full z-50 transition-all duration-300
+          ${isScrolled ? "py-3 shadow-md" : "py-5"}
+          bg-white dark:bg-gray-900`}
+      >
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4">
+    
+          <a
+            href="#home"
+            className="text-xl font-bold text-cyan-600 dark:text-cyan-400"
+          >
+            Debasis<span className="text-gray-800 dark:text-gray-200">'s</span> Portfolio
+          </a>
 
-            {/* For mobile screen */}
+          
+          <div className="hidden md:flex space-x-8">
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-gray-700 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition"
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
+
+          
+          <div className="flex items-center gap-4">
+            
             <button
-                onClick={() => setIsMenuOpen((prev) => !prev)}
-                className="md:hidden p-2 text-foreground z-50 absolute top-4 right-4"
-                aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+              onClick={() => setDarkMode(!darkMode)}
+              className="text-gray-700 dark:text-gray-300"
+              aria-label="Toggle Dark Mode"
             >
-                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {darkMode ? <Sun size={22} /> : <Moon size={22} />}
             </button>
 
-            <div
-                className={utils(
-                    "fixed inset-0 bg-background/95 backdroup-blur-md z-40 flex flex-col items-center justify-center",
-                    "transition-all duration-300 md:hidden",
-                    isMenuOpen
-                        ? "opacity-100 pointer-events-auto"
-                        : "opacity-0 pointer-events-none"
-                )}
+            
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden text-gray-700 dark:text-gray-300"
             >
-                <div className="flex flex-col space-y-8 text-xl">
-                    {navItem.map((item, key) => (
-                        <a
-                            key={key}
-                            href={item.href}
-                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                            onClick={() => setIsMenuOpen(false)}
-                        >
-                            {item.name}
-                        </a>
-                    ))}
-                </div>
-            </div>
-        </nav>
-    )
-}
+              {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
+            </button>
+          </div>
+        </div>
+      </nav>
 
-export default Navbar
+      <div
+        className={`fixed inset-0 z-40 flex flex-col items-center justify-center space-y-8 text-xl
+          bg-white dark:bg-gray-900 transition-all duration-300 md:hidden
+          ${isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+      >
+        {navItems.map((item) => (
+          <a
+            key={item.name}
+            href={item.href}
+            onClick={() => setIsMenuOpen(false)}
+            className="text-gray-700 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400"
+          >
+            {item.name}
+          </a>
+        ))}
+      </div>
+    </>
+  );
+};
+
+export default Navbar;
+
