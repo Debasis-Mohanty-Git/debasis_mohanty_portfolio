@@ -1,97 +1,95 @@
-import { Briefcase, Code, Code2, User } from 'lucide-react'
+import { Briefcase, Code, Code2, User, ExternalLink, Download } from 'lucide-react'
 import React from 'react'
 
 const AboutMe = () => {
     return (
-        <section id="about" className='py-24 px-4 relative'>
-            <div className='container mx-auto max-w-5xl'>
-                <h2 className='text-3xl md:text-4xl font-bold'>
-                    About <span className='text-cyan-500'>Me</span>
-                </h2>
-                <br></br>
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-12 items-center'>
-                    {/* Profile Summery */}
-                    <div className='space-y-3'>
-                        <h3 className='text-2xl font-semibold'>Passionate Java Developer</h3>
-                        <p className='text-muted-foreground'>
-                            I am a dedicated Java developer with a strong foundation in building robust, 
-                            scalable, and high-performance web applications. My passion lies in crafting 
-                            clean and efficient code, designing intuitive user experiences, and delivering 
-                            real-world solutions that make an impact. I enjoy turning complex problems into 
-                            simple, elegant solutions using modern frameworks and best development practices.
-                        </p>
+        <section id="about" className='py-32 px-4 relative overflow-hidden' >
+            {/* Background Accent */}
+            <div className="absolute top-0 right-0 -z-10 w-72 h-72 bg-cyan-500/5 blur-[120px] rounded-full" />
+            
+            <div className='container mx-auto max-w-6xl'>
+                <div className='flex flex-col md:flex-row gap-16 items-start'>
+                    
+                    {/* Left Side: Profile Summary */}
+                    <div className='md:w-1/2 space-y-8 animate-fade-in'>
+                        <div className="space-y-2">
+                            <h2 className='text-sm uppercase tracking-[0.3em] text-cyan-500 font-bold'>
+                                Introduction
+                            </h2>
+                            <h3 className='text-4xl md:text-5xl font-bold tracking-tight'>
+                                About <span className='text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500'>Me</span>
+                            </h3>
+                        </div>
 
-                        <p className='text-muted-foreground'>
-                            With hands-on experience in both frontend and backend technologies, I focus on building 
-                            full-stack applications using Java, Spring Boot, MySQL, and tools like Git, Postman, and Maven. 
-                            I value collaboration, continuous learning, and writing maintainable code that aligns with industry 
-                            standards. My goal is to build meaningful software that not only works flawlessly but also adds value 
-                            to users and businesses.
-                        </p>
+                        <div className='space-y-4 text-lg text-muted-foreground leading-relaxed'>
+                            <p>
+                                I am a dedicated <span className='text-white font-medium'>JAVA fullstack & MERN Developer</span> with a strong foundation in building robust, 
+                                scalable, and high-performance web applications. My passion lies in crafting 
+                                clean and efficient code and delivering real-world solutions.
+                            </p>
 
-                        <div className='flex flex-col sm:flex-row gap-4 pt-4 justify-center'>
-                            <a href='#contact' className='cosmic-button'>
-                                Get In Touch
+                            <p>
+                                With hands-on experience in both frontend and backend technologies, I focus on building 
+                                full-stack applications using <span className='text-cyan-400'>JAVA fullstack/MERN stack</span>. 
+                                I value writing maintainable code that aligns with modern industry standards.
+                            </p>
+                        </div>
+
+                        <div className='flex flex-wrap gap-4 pt-4'>
+                            <a href='#contact' className='cosmic-button flex items-center gap-2 group'>
+                                Get In Touch 
+                                <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                             </a>
 
                             <a href="/cv.pdf" download="Debasis_Mohanty_CV.pdf"
-                                className='px-6 py-2 rounded-full border border-cyan-300 text-primary hover:bg-cyan-500 hover:text-black'>
+                                className='px-8 py-3 rounded-full border border-slate-700 bg-slate-900/50 text-white hover:bg-cyan-500 hover:text-black hover:border-cyan-500 transition-all duration-300 flex items-center gap-2'>
+                                <Download className="h-4 w-4" />
                                 Download CV
                             </a>
                         </div>
-
                     </div>
-                    {/* Skills */}
-                    <div className='grid grid-cols-1 gap-6'>
-                        <div className='gradient-border p-6 card-hover'>
-                            <div className='flex items-start gap-4'>
-                                <div className='p-3 rounded-full bg-cyan/10'>
-                                    <User className='h-6 w-6 text-cyan-400'></User>
-                                </div>
-                                <div className='text-left'>
-                                    <h4 className='font-semibold text-lg'>Full Stack Java Developer</h4>
-                                    <p className='text-muted-foreground'>
-                                        Designing and developing complete web applications — from robust backend systems to dynamic, user-friendly frontends.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div className='gradient-border p-6 card-hover'>
-                            <div className='flex items-start gap-4'>
-                                <div className='p-3 rounded-full bg-cyan/10'>
-                                    <Code2 className='h-6 w-6 text-cyan-400'></Code2>
-                                </div>
-                                <div className='text-left'>
-                                    <h4 className='font-semibold text-lg'>Web Development</h4>
-                                    <p className='text-muted-foreground'>Createing responsive website and web application with modern frameworks</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className='gradient-border p-6 card-hover'>
-                            <div className='flex items-start gap-4'>
-                                <div className='p-3 rounded-full bg-cyan/10'>
-                                    <Briefcase className='h-6 w-6 text-cyan-400'></Briefcase>
-                                </div>
-                                <div className='text-left'>
-                                    <h4 className='font-semibold text-lg'>Project Management</h4>
-                                    <p className='text-muted-foreground'>
-                                        Planning, organizing, and managing projects from start to finish to ensure timely delivery, team coordination, and quality outcomes.
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
-
+                    {/* Right Side: Skills/Experience Cards */}
+                    <div className='md:w-1/2 grid grid-cols-1 gap-4 w-full'>
+                        <SkillCard 
+                            icon={<User />} 
+                            title="Full Stack Java  & MERN stack Developer" 
+                            desc="Building end-to-end applications from scalable architectures to intuitive interfaces."
+                            delay="delay-100"
+                        />
+                        <SkillCard 
+                            icon={<Code2 />} 
+                            title="Modern Web Development" 
+                            desc="Crafting responsive and high-performance websites using the latest industry frameworks."
+                            delay="delay-200"
+                        />
+                        <SkillCard 
+                            icon={<Briefcase />} 
+                            title="Project Management" 
+                            desc="Leading development lifecycles with a focus on clean architecture and timely delivery."
+                            delay="delay-300"
+                        />
                     </div>
 
                 </div>
-
             </div>
-
         </section>
     )
 }
+
+// Sub-component for cleaner code
+const SkillCard = ({ icon, title, desc, delay }) => (
+    <div className={`group p-6 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-cyan-500/30 transition-all duration-500 animate-fade-in ${delay}`}>
+        <div className='flex items-start gap-5'>
+            <div className='p-3 rounded-xl bg-cyan-500/10 text-cyan-400 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-black transition-all duration-500'>
+                {React.cloneElement(icon, { size: 24 })}
+            </div>
+            <div className='space-y-1'>
+                <h4 className='font-bold text-xl text-white'>{title}</h4>
+                <p className='text-muted-foreground text-sm leading-relaxed'>{desc}</p>
+            </div>
+        </div>
+    </div>
+)
 
 export default AboutMe

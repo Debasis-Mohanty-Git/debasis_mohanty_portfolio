@@ -41,10 +41,28 @@ const HomeSection = () => {
         <section className='relative min-h-screen flex flex-col items-center justify-center px-4' id="home">
             <div className='container max-w-4xl mx-auto text-center z-10'>
                 <div className='space-y-6'>
-                    <h1 className='text-4xl md:text-6xl tracking-tight'>
-                        <span className='opacity-0 animate-fade-in'>Hi, I'm </span>
-                        <span className='text-cyan-500 opacity-0 animate-fade-in-delay-1'>Debasis </span>
-                        <span className='text-cyan-500 opacity-0 animate-fade-in-delay-2'>Mohanty</span>
+                    <h1 className='text-4xl md:text-6xl font-bold tracking-tight mb-4'>
+                        {/* The Static Prefix */}
+                        <span className='opacity-0 animate-fade-in inline-block mr-3'>
+                            Hi, I'm
+                        </span>
+
+                        {/* The Animated Name */}
+                        <span className="inline-flex flex-wrap justify-center">
+                            {"Debasis Mohanty".split("").map((char, index) => (
+                                <span
+                                    key={index}
+                                    className="inline-block opacity-0 animate-letter-entry text-cyan-500 hover:text-white transition-all duration-200 cursor-default hover:-translate-y-2 hover:drop-shadow-[0_0_15px_rgba(6,182,212,0.8)]"
+                                    style={{
+                                        // (index + 8) creates a delay so it starts after "Hi, I'm"
+                                        animationDelay: `${(index + 8) * 0.06}s`,
+                                        whiteSpace: char === " " ? "pre" : "normal"
+                                    }}
+                                >
+                                    {char}
+                                </span>
+                            ))}
+                        </span>
                     </h1>
 
                     <p className='text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-3'>
