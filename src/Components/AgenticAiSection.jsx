@@ -124,18 +124,21 @@ const AgenticAiSection = () => {
   };
 
   return (
-    <section id="agentic-ai" className="py-20 md:py-28 px-4 sm:px-6 lg:px-8 relative bg-secondary/30">
+    <section id="agentic-ai" className="scroll-mt-16 sm:scroll-mt-20 py-20 md:py-28 px-4 sm:px-6 lg:px-8 relative bg-secondary/30">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 text-purple-700 dark:text-purple-300 text-xs font-semibold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-3">
             <Bot className="w-3.5 h-3.5" />
             <span>Autonomous Intelligence &amp; Multi-Agent Systems</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
-            Agentic AI &amp; <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-cyan-500">Autonomous Intelligence</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white leading-tight">
+            <span className="text-white">Agentic AI &amp; </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-400 to-cyan-400">
+              Autonomous Intelligence
+            </span>
           </h2>
-          <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-2">
+          <p className="text-slate-300 text-sm sm:text-base mt-2">
             Pioneering autonomous multi-agent reasoning, dynamic function tool calling, and enterprise Retrieval-Augmented Generation (RAG).
           </p>
         </div>
@@ -147,19 +150,19 @@ const AgenticAiSection = () => {
               key={idx}
               whileHover={{ y: -4 }}
               transition={{ duration: 0.2 }}
-              className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs hover:border-purple-500/40 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+              className="p-6 rounded-2xl border border-slate-800 bg-slate-900/90 shadow-lg hover:border-purple-500/40 transition-all duration-300 flex flex-col justify-between"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800/40">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-purple-500/15 text-purple-300 border border-purple-500/30">
                     {feature.badge}
                   </span>
-                  <Sparkles className="w-4 h-4 text-purple-500" />
+                  <Sparkles className="w-4 h-4 text-purple-400" />
                 </div>
-                <h3 className="font-bold text-lg text-slate-900 dark:text-white">
+                <h3 className="font-bold text-lg text-white">
                   {feature.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -173,9 +176,9 @@ const AgenticAiSection = () => {
         </div>
 
         {/* Interactive Autonomous Agent Live Simulation Console */}
-        <div className="rounded-2xl border border-slate-200 dark:border-purple-500/30 bg-white/95 dark:bg-slate-900/90 shadow-xl overflow-hidden backdrop-blur-md">
+        <div className="rounded-2xl border border-purple-500/30 bg-slate-900/90 shadow-xl overflow-hidden backdrop-blur-md">
           {/* Console Header */}
-          <div className="px-5 py-3.5 bg-slate-900 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 text-white">
+          <div className="px-5 py-3.5 bg-slate-950 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 text-white">
             <div className="flex items-center gap-2">
               <div className="flex gap-1.5">
                 <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
@@ -212,15 +215,15 @@ const AgenticAiSection = () => {
           {/* Console Body */}
           <div className="p-6 space-y-6">
             {/* User prompt box */}
-            <div className="flex items-start gap-3 p-4 rounded-xl bg-purple-50/70 dark:bg-purple-950/20 border border-purple-200/80 dark:border-purple-800/40">
-              <div className="p-2 rounded-lg bg-purple-100 text-purple-700 dark:bg-purple-500/20 dark:text-purple-300 shrink-0">
+            <div className="flex items-start gap-3 p-4 rounded-xl bg-purple-950/30 border border-purple-800/40">
+              <div className="p-2 rounded-lg bg-purple-500/20 text-purple-300 shrink-0">
                 <Bot className="w-5 h-5" />
               </div>
               <div className="space-y-1">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-purple-800 dark:text-purple-300 block">
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-purple-300 block">
                   Simulated User Goal / Request
                 </span>
-                <p className="text-sm sm:text-base font-semibold text-slate-900 dark:text-white">
+                <p className="text-sm sm:text-base font-semibold text-white">
                   "{selectedWorkflow.userPrompt}"
                 </p>
               </div>
@@ -228,14 +231,14 @@ const AgenticAiSection = () => {
 
             {/* Step-by-step Execution Progress */}
             <div className="space-y-3">
-              <div className="flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
+              <div className="flex items-center justify-between text-xs text-slate-400">
                 <span className="font-semibold uppercase tracking-wider">
                   Autonomous Reasoning &amp; Execution Steps
                 </span>
                 <button
                   onClick={runSimulation}
                   disabled={isSimulating}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-purple-100 text-purple-700 hover:bg-purple-200 dark:bg-purple-500/15 dark:text-purple-300 dark:hover:bg-purple-500/25 text-xs font-semibold transition-all cursor-pointer disabled:opacity-50"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 border border-purple-500/40 text-xs font-semibold transition-all cursor-pointer disabled:opacity-50"
                 >
                   {isSimulating ? (
                     <>
@@ -266,29 +269,29 @@ const AgenticAiSection = () => {
                       }}
                       className={`p-4 rounded-xl border transition-all ${
                         isCurrent
-                          ? "border-purple-500 bg-purple-50/60 dark:bg-purple-950/20 shadow-xs"
+                          ? "border-purple-500 bg-purple-950/30 shadow-md"
                           : isReached
-                          ? "border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900/60"
-                          : "border-slate-100 dark:border-slate-800/40 bg-slate-50/40 dark:bg-slate-950/40"
+                          ? "border-slate-800 bg-slate-900/70"
+                          : "border-slate-800/40 bg-slate-950/40"
                       }`}
                     >
                       <div className="flex items-center gap-2 mb-1.5">
                         {step.status === "success" && isReached ? (
-                          <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                         ) : isReached ? (
-                          <div className="w-4 h-4 rounded-full bg-cyan-600 dark:bg-cyan-500 text-white text-[10px] flex items-center justify-center font-bold">
+                          <div className="w-4 h-4 rounded-full bg-cyan-500 text-slate-950 text-[10px] flex items-center justify-center font-bold">
                             {sIdx + 1}
                           </div>
                         ) : (
-                          <div className="w-4 h-4 rounded-full border border-slate-300 dark:border-slate-700 text-[10px] flex items-center justify-center text-slate-400">
+                          <div className="w-4 h-4 rounded-full border border-slate-700 text-[10px] flex items-center justify-center text-slate-400">
                             {sIdx + 1}
                           </div>
                         )}
-                        <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">
+                        <h4 className="font-bold text-xs sm:text-sm text-white">
                           {step.stage}
                         </h4>
                       </div>
-                      <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pl-6">
+                      <p className="text-xs text-slate-300 leading-relaxed pl-6">
                         {step.detail}
                       </p>
                     </motion.div>

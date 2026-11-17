@@ -67,13 +67,13 @@ const AboutMe = () => {
           <div className="lg:col-span-6 space-y-6">
             <div className="space-y-4 text-base text-muted-foreground leading-relaxed">
               <p>
-                I am a dedicated <strong className="text-foreground font-semibold">Software Developer L-1</strong> with hands-on experience building and deploying production web applications using <span className="text-cyan-600 dark:text-cyan-400 font-medium">Java, Spring Boot, React.js, and MySQL</span>.
+                I am a dedicated <strong className="text-white font-semibold">Software Developer L-1</strong> with hands-on experience building and deploying production web applications using <span className="text-cyan-400 font-medium">Java, Spring Boot, React.js, and MySQL</span>.
               </p>
               <p>
-                Currently at <strong className="text-foreground font-semibold">AssetMagnets</strong> in Bhubaneswar, I develop and maintain RESTful APIs integrated with modern React frontends, supporting real-time data flows and maintaining production-grade code quality through code reviews and Git version control. I have shipped production features for live client platforms including <strong className="text-foreground font-semibold">Intellpharma</strong> and <strong className="text-foreground font-semibold">AssetMagnets</strong>.
+                Currently at <strong className="text-white font-semibold">AssetMagnets</strong> in Bhubaneswar, I develop and maintain RESTful APIs integrated with modern React frontends, supporting real-time data flows and maintaining production-grade code quality through code reviews and Git version control. I have shipped production features for live client platforms including <strong className="text-white font-semibold">Intellpharma</strong> and <strong className="text-white font-semibold">AssetMagnets</strong>.
               </p>
               <p>
-                In addition to full-stack engineering, I specialize in <strong className="text-purple-600 dark:text-purple-400 font-semibold">Spring AI &amp; Agentic AI</strong> — building autonomous tool-calling agents and RAG pipelines that bring enterprise intelligence directly into Java and React applications.
+                In addition to full-stack engineering, I specialize in <strong className="text-purple-400 font-semibold">Spring AI &amp; Agentic AI</strong> — building autonomous tool-calling agents and RAG pipelines that bring enterprise intelligence directly into Java and React applications.
               </p>
             </div>
 
