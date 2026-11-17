@@ -1,119 +1,154 @@
-import { Briefcase, Code, Code2, User, ExternalLink, Download } from 'lucide-react'
-import React from 'react'
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  Brain,
+  Code2,
+  Cloud,
+  Download,
+  ExternalLink,
+  GraduationCap,
+  MapPin,
+  Sparkles,
+  Layers,
+  CheckCircle2,
+  Bot,
+} from "lucide-react";
+import { personalInfo } from "../data/portfolioData";
 
 const AboutMe = () => {
-    return (
-        <section id="about" className='py-32 px-4 relative overflow-hidden' >
-            {/* Background Accent */}
-            <div className="absolute top-0 right-0 -z-10 w-72 h-72 bg-cyan-500/5 blur-[120px] rounded-full" />
+  const highlights = [
+    { label: "Role", value: "Software Dev L-1", sub: "AssetMagnets" },
+    { label: "Education", value: "B.Tech in ETC", sub: "TAT, Bhubaneswar" },
+    { label: "Core Stack", value: "Java & Spring Boot", sub: "+ React & MySQL" },
+    { label: "AI Focus", value: "Agentic AI & Gen AI", sub: "Spring AI Certified" },
+  ];
 
-            <div className='container mx-auto max-w-6xl'>
-                <div className='flex flex-col md:flex-row gap-16 items-start'>
+  const focusCards = [
+    {
+      icon: <Code2 className="w-6 h-6 text-cyan-500" />,
+      title: "Full Stack Software Engineering",
+      desc: "Developing production web applications with Java, Spring Boot, React.js, and MySQL. Designing secure RESTful APIs with Spring Security and JWT.",
+      badge: "Java & Spring",
+    },
+    {
+      icon: <Bot className="w-6 h-6 text-purple-500" />,
+      title: "Agentic AI & Spring AI",
+      desc: "Architecting autonomous agent reasoning loops, multi-step LLM tool calling, and RAG vector search pipelines for intelligent enterprise automation.",
+      badge: "Agentic AI",
+    },
+    {
+      icon: <Cloud className="w-6 h-6 text-blue-500" />,
+      title: "Cloud & Production Delivery",
+      desc: "Deploying production services on AWS (EC2, S3, RDS), configuring WebSocket real-time data flows, and shipping live features for Intellpharma & AssetMagnets.",
+      badge: "AWS & Systems",
+    },
+  ];
 
-                    {/* Left Side: Profile Summary */}
-                    <div className='md:w-1/2 space-y-8 animate-fade-in'>
-                        <div className="space-y-2">
-                            <h2 className='text-sm uppercase tracking-[0.3em] text-cyan-500 font-bold'>
-                                Introduction
-                            </h2>
-                            <h3 className='text-4xl md:text-5xl font-bold tracking-tight'>
-                                About <span className='text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500'>Me</span>
-                            </h3>
-                        </div>
+  return (
+    <section id="about" className="py-20 md:py-28 px-4 sm:px-6 lg:px-8 relative">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Heading */}
+        <div className="text-center max-w-2xl mx-auto mb-14 md:mb-18">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Profile &amp; Engineering Focus</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+            About <span className="text-cyan-500">Debasis</span>
+          </h2>
+          <p className="text-muted-foreground text-sm sm:text-base mt-2">
+            Software Developer L-1 engineering scalable software systems and autonomous AI-driven workflows.
+          </p>
+        </div>
 
-                        <div className='space-y-4 text-lg text-muted-foreground leading-relaxed'>
-                            <p>
-                                I am a dedicated JAVA fullstack & MERN Developer with a strong foundation in building robust,
-                                scalable, and high-performance web applications. My passion lies in crafting
-                                clean and efficient code and delivering real-world solutions.
-                            </p>
-
-                            <p>
-                                With hands-on experience in both frontend and backend technologies, I focus on building
-                                full-stack applications using <span className='text-cyan-400'>JAVA fullstack/MERN stack</span>.
-                                I value writing maintainable code that aligns with modern industry standards.
-                            </p>
-                        </div>
-
-                        <div className="flex flex-nowrap sm:flex-wrap gap-4 pt-4">
-                            <a href="#contact" className="cosmic-button flex items-center gap-2 group">
-                                Get In Touch
-                                <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                            </a>
-
-                            <a
-                                href="/cv.pdf"
-                                download="Debasis_Mohanty_CV.pdf"
-                                className="px-8 py-3 rounded-full border border-slate-700 bg-slate-900/50 text-white hover:bg-cyan-500 hover:text-black hover:border-cyan-500 transition-all duration-300 flex items-center gap-2"
-                            >
-                                <Download className="h-4 w-4" />
-                                Download CV
-                            </a>
-                        </div>
-
-                    </div>
-
-                    {/* Right Side: Skills/Experience Cards */}
-                    <div className='md:w-1/2 grid grid-cols-1 gap-4 w-full'>
-                        <SkillCard
-                            icon={<User />}
-                            title="Full Stack Java  & MERN stack Developer"
-                            desc="Building end-to-end applications from scalable architectures to intuitive interfaces."
-                            delay="delay-100"
-                        />
-                        <SkillCard
-                            icon={<Code2 />}
-                            title="Modern Web Development"
-                            desc="Crafting responsive and high-performance websites using the latest industry frameworks."
-                            delay="delay-200"
-                        />
-                        <SkillCard
-                            icon={<Briefcase />}
-                            title="Project Management"
-                            desc="Leading development lifecycles with a focus on clean architecture and timely delivery."
-                            delay="delay-300"
-                        />
-                    </div>
-
-                </div>
+        {/* 2-Column Responsive Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          {/* Left Column: Narrative & Highlights */}
+          <div className="lg:col-span-6 space-y-6">
+            <div className="space-y-4 text-base text-muted-foreground leading-relaxed">
+              <p>
+                I am a dedicated <strong className="text-foreground font-semibold">Software Developer L-1</strong> with hands-on experience building and deploying production web applications using <span className="text-cyan-600 dark:text-cyan-400 font-medium">Java, Spring Boot, React.js, and MySQL</span>.
+              </p>
+              <p>
+                Currently at <strong className="text-foreground font-semibold">AssetMagnets</strong> in Bhubaneswar, I develop and maintain RESTful APIs integrated with modern React frontends, supporting real-time data flows and maintaining production-grade code quality through code reviews and Git version control. I have shipped production features for live client platforms including <strong className="text-foreground font-semibold">Intellpharma</strong> and <strong className="text-foreground font-semibold">AssetMagnets</strong>.
+              </p>
+              <p>
+                In addition to full-stack engineering, I specialize in <strong className="text-purple-600 dark:text-purple-400 font-semibold">Spring AI &amp; Agentic AI</strong> — building autonomous tool-calling agents and RAG pipelines that bring enterprise intelligence directly into Java and React applications.
+              </p>
             </div>
-        </section>
-    )
-}
 
-const SkillCard = ({ icon, title, desc, delay }) => (
-  <div
-    className={`group p-6 rounded-2xl border 
-    bg-card border-border
-    dark:backdrop-blur-sm
-    hover:border-cyan-500/40
-    transition-all duration-500 animate-fade-in ${delay}`}
-  >
-    <div className="flex items-start gap-5 text-left">
-      <div
-        className="p-3 rounded-xl 
-        bg-cyan-500/10 text-cyan-600
-        dark:text-cyan-400
-        group-hover:bg-cyan-500
-        group-hover:text-black
-        group-hover:scale-110
-        transition-all duration-500"
-      >
-        {React.cloneElement(icon, { size: 24 })}
+            {/* Quick Stat Pill Cards */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+              {highlights.map((item, index) => (
+                <div
+                  key={index}
+                  className="p-3 rounded-xl border border-border/70 bg-card/60 backdrop-blur-xs text-center flex flex-col justify-center"
+                >
+                  <span className="text-[10px] uppercase font-semibold tracking-wider text-muted-foreground">
+                    {item.label}
+                  </span>
+                  <span className="text-xs sm:text-sm font-bold text-foreground mt-0.5 truncate">
+                    {item.value}
+                  </span>
+                  <span className="text-[10px] text-cyan-600 dark:text-cyan-400 truncate">
+                    {item.sub}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-3 pt-4">
+              <a href="#contact" className="cosmic-button text-xs sm:text-sm">
+                <span>Get In Touch</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+
+              <a
+                href={personalInfo.resumeUrl}
+                download="Debasis_Mohanty_CV.pdf"
+                className="secondary-button border border-slate-700 bg-slate-900/80 hover:bg-slate-800 text-xs sm:text-sm text-white shadow-md transition-all duration-300"
+              >
+                <Download className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Download Resume</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Right Column: Focus Cards */}
+          <div className="lg:col-span-6 space-y-4">
+            {focusCards.map((card, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.2 }}
+                className="group p-5 sm:p-6 rounded-2xl border border-border/80 bg-card hover:border-cyan-500/40 shadow-xs hover:shadow-md transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="p-3 rounded-xl bg-secondary/80 group-hover:bg-cyan-500/10 transition-colors">
+                    {card.icon}
+                  </div>
+                  <div className="flex-1 space-y-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <h3 className="font-bold text-base sm:text-lg text-foreground">
+                        {card.title}
+                      </h3>
+                      <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-secondary text-muted-foreground">
+                        {card.badge}
+                      </span>
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed pt-1">
+                      {card.desc}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
+    </section>
+  );
+};
 
-      <div className="space-y-1">
-        <h4 className="font-bold text-xl text-foreground">
-          {title}
-        </h4>
-
-        <p className="text-sm leading-relaxed text-foreground/70">
-          {desc}
-        </p>
-      </div>
-    </div>
-  </div>
-);
-
-
-export default AboutMe
+export default AboutMe;

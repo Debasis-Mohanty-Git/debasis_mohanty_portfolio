@@ -1,137 +1,142 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Cpu } from "lucide-react";
+import { skillsData } from "../data/portfolioData";
+import {
+  TechLogo,
+  RealGeminiIcon,
+  RealAgenticAiIcon,
+  RealCloudinaryIcon,
+} from "./TechIcons";
 
-/* =======================
-   SKILLS DATA
-======================= */
-const skills = [
-  // Backend
-  { name: "Java", level: 80, category: "backend" },
-  { name: "Spring Boot", level: 80, category: "backend" },
-  { name: "WebSocket", level: 70, category: "backend" },
-  { name: "Microservices", level: 90, category: "backend" },
-  { name: "Spring Security", level: 80, category: "backend" },
-  { name: "Spring MVC", level: 90, category: "backend" },
-  { name: "Servlets", level: 85, category: "backend" },
-  { name: "RESTful APIs", level: 90, category: "backend" },
-  { name: "Hibernate / JPA", level: 80, category: "backend" },
-  { name: "MySQL", level: 90, category: "backend" },
-  { name: "Node.js", level: 75, category: "backend" },
-  { name: "Express.js", level: 75, category: "backend" },
+const categories = [
+  { id: "all", label: "All Skills" },
+  { id: "backend", label: "Java & Backend", data: skillsData.backend },
+  { id: "aiAgentic", label: "Agentic AI & Gen AI", data: skillsData.aiAgentic },
+  { id: "frontend", label: "Frontend", data: skillsData.frontend },
+  { id: "cloudDatabase", label: "Cloud & Databases", data: skillsData.cloudDatabase },
+];
 
-  // Frontend
-  { name: "HTML5 / CSS3", level: 95, category: "frontend" },
-  { name: "JavaScript (ES6+)", level: 90, category: "frontend" },
-  { name: "TypeScript", level: 80, category: "frontend" },
-  { name: "React.js", level: 85, category: "frontend" },
-  { name: "Tailwind CSS", level: 85, category: "frontend" },
-  { name: "Bootstrap", level: 80, category: "frontend" },
-  { name: "JSP (JavaServer Pages)", level: 80, category: "frontend" },
-
-  // Tools
-  { name: "Git & GitHub", level: 85, category: "tools" },
-  { name: "Maven", level: 80, category: "tools" },
-  { name: "Postman", level: 85, category: "tools" },
-  { name: "VS Code", level: 90, category: "tools" },
-  { name: "IntelliJ IDEA", level: 90, category: "tools" },
-  { name: "Spring Tool Suite (STS)", level: 85, category: "tools" },
-]
-
-const categories = ["all", "backend", "frontend", "tools"]
-
-/* =======================
-   COMPONENT
-======================= */
 const Skills = () => {
-  const [activeCategory, setActiveCategory] = useState("all")
-  const [showAll, setShowAll] = useState(false)
+  const [activeTab, setActiveTab] = useState("all");
 
-  const filteredSkills =
-    activeCategory === "all"
-      ? skills
-      : skills.filter((skill) => skill.category === activeCategory)
+  const getDisplayedSkills = () => {
+    if (activeTab === "all") {
+      return [
+        ...skillsData.backend.map((s) => ({ ...s, group: "Java & Backend" })),
+        ...skillsData.aiAgentic.map((s) => ({ ...s, group: "Agentic AI" })),
+        ...skillsData.frontend.map((s) => ({ ...s, group: "Frontend" })),
+        ...skillsData.cloudDatabase.map((s) => ({ ...s, group: "Cloud & DB" })),
+      ];
+    }
+    const cat = categories.find((c) => c.id === activeTab);
+    return cat ? cat.data.map((s) => ({ ...s, group: cat.label })) : [];
+  };
 
-  const displayedSkills = showAll
-    ? filteredSkills
-    : filteredSkills.slice(0, 9)
+  const displayedSkills = getDisplayedSkills();
 
   return (
-    <section id="skills" className="py-24 px-4 bg-secondary/30">
-      <div className="container mx-auto max-w-5xl">
-        {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-          My <span className="text-cyan-500">Skills</span>
-        </h2>
+    <section id="skills" className="py-20 md:py-28 px-4 sm:px-6 lg:px-8 relative bg-secondary/20">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
+            <Cpu className="w-3.5 h-3.5" />
+            <span>Core Competencies</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+            Technical <span className="text-cyan-500">Skills</span>
+          </h2>
+          <p className="text-muted-foreground text-sm sm:text-base mt-2">
+            Verified stack across Java, Spring Boot, Spring Security, Spring AI, React.js, AWS, and modern databases.
+          </p>
+        </div>
 
-        <p className="text-center text-muted-foreground max-w-xl mx-auto mb-12">
-          Technologies and tools I use to build scalable, secure, and
-          high-performance applications.
-        </p>
-
-        {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => {
-                setActiveCategory(category)
-                setShowAll(false)
-              }}
-              className={`px-5 py-2 rounded-full capitalize text-sm font-medium transition-all duration-300 ${
-                activeCategory === category
-                  ? "bg-cyan-500 text-white shadow-md shadow-cyan-500/30"
-                  : "bg-secondary/70 hover:bg-cyan-500 hover:text-white"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
+        {/* Category Tabs */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {categories.map((cat) => {
+            const isActive = activeTab === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveTab(cat.id)}
+                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border ${
+                  isActive
+                    ? "bg-cyan-500 border-cyan-500 text-white shadow-md shadow-cyan-500/25"
+                    : "bg-card border-border/70 text-muted-foreground hover:text-foreground hover:border-cyan-500/50"
+                }`}
+              >
+                {cat.label}
+              </button>
+            );
+          })}
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayedSkills.map((skill) => (
-            <div
-              key={skill.name}
-              className="bg-card p-6 rounded-xl border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="flex justify-between items-center mb-3">
-                <h3 className="font-semibold text-lg">{skill.name}</h3>
-                <span className="text-xs px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-500">
-                  {skill.category}
-                </span>
-              </div>
+        <motion.div
+          layout
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+        >
+          <AnimatePresence>
+            {displayedSkills.map((skill) => (
+              <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.25 }}
+                key={skill.name}
+                className="group p-5 rounded-2xl border border-border/70 bg-card hover:border-cyan-500/40 shadow-xs hover:shadow-md transition-all duration-300"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-secondary/80 flex items-center justify-center shrink-0 p-1.5 border border-border/50 group-hover:border-cyan-500/30 transition-colors">
+                      {skill.isGemini ? (
+                        <RealGeminiIcon className="w-5 h-5" />
+                      ) : skill.isAi ? (
+                        <RealAgenticAiIcon className="w-5 h-5" />
+                      ) : skill.isCloudinary ? (
+                        <RealCloudinaryIcon className="w-5 h-5" />
+                      ) : (
+                        <TechLogo
+                          name={skill.name}
+                          iconKey={skill.iconKey}
+                          invertInDark={skill.invertDark}
+                          className="w-5 h-5"
+                        />
+                      )}
+                    </div>
+                    <h3 className="font-semibold text-sm sm:text-base text-foreground group-hover:text-cyan-500 transition-colors">
+                      {skill.name}
+                    </h3>
+                  </div>
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-secondary text-muted-foreground">
+                    {skill.tag || skill.group}
+                  </span>
+                </div>
 
-              {/* Progress Bar */}
-              <div className="w-full h-2 rounded-full bg-secondary overflow-hidden">
-                <div
-                  className="h-2 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-600 transition-all duration-1000"
-                  style={{ width: `${skill.level}%` }}
-                />
-              </div>
-
-              <div className="text-right mt-1">
-                <span className="text-sm text-muted-foreground">
-                  {skill.level}%
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Show More / Less */}
-        {filteredSkills.length > 9 && (
-          <div className="flex justify-center mt-10">
-            <button
-              onClick={() => setShowAll(!showAll)}
-              className="px-6 py-2 rounded-lg bg-cyan-500 text-white hover:bg-cyan-600 transition-all duration-300"
-            >
-              {showAll ? "Show Less" : "Show More"}
-            </button>
-          </div>
-        )}
+                {/* Progress Bar Container */}
+                <div className="space-y-1.5">
+                  <div className="w-full h-2 rounded-full bg-secondary/80 overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${skill.level}%` }}
+                      transition={{ duration: 0.8, ease: "easeOut" }}
+                      className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-600"
+                    />
+                  </div>
+                  <div className="flex justify-between items-center text-[11px] text-muted-foreground">
+                    <span>Proficiency</span>
+                    <span className="font-semibold text-foreground">{skill.level}%</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Skills
+export default Skills;
